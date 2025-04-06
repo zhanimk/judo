@@ -14,7 +14,7 @@ const Profile = ({ user, onLogout }) => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      if (!user) return; // Проверяем, что пользователь существует
+      if (!user) return;
 
       setLoading(true);
       setError("");
@@ -30,16 +30,15 @@ const Profile = ({ user, onLogout }) => {
         console.error("Ошибка загрузки профиля:", error.message);
       } else {
         setProfile(data);
-        setNewName(data.full_name); // Установить имя для редактирования
+        setNewName(data.full_name);
       }
 
       setLoading(false);
     };
 
     const addProfile = async () => {
-      if (!user) return; // Проверяем, что пользователь существует
+      if (!user) return;
 
-      // Проверяем, существует ли профиль
       const { data: existingProfile, error: fetchError } = await supabase
         .from("profiles")
         .select("id")
@@ -47,7 +46,10 @@ const Profile = ({ user, onLogout }) => {
         .single();
 
       if (fetchError && fetchError.code !== "PGRST116") {
-        console.error("Ошибка проверки существования профиля:", fetchError.message);
+        console.error(
+          "Ошибка проверки существования профиля:",
+          fetchError.message
+        );
         return;
       }
 
@@ -56,17 +58,14 @@ const Profile = ({ user, onLogout }) => {
         return;
       }
 
-      // Добавляем профиль, если его ещё нет
-      const { data, error } = await supabase
-        .from("profiles")
-        .insert([
-          {
-            id: user.id,
-            email: user.email,
-            username: user.username || "default_username",
-            full_name: user.full_name || null,
-          },
-        ]);
+      const { data, error } = await supabase.from("profiles").insert([
+        {
+          id: user.id,
+          email: user.email,
+          username: user.username || "default_username",
+          full_name: user.full_name || null,
+        },
+      ]);
 
       if (error) {
         console.error("Ошибка добавления в таблицу profiles:", error.message);
@@ -81,7 +80,6 @@ const Profile = ({ user, onLogout }) => {
     }
   }, [user]);
 
-  // Обновление профиля
   const updateProfile = async () => {
     setLoading(true);
     setError("");
@@ -102,7 +100,6 @@ const Profile = ({ user, onLogout }) => {
     }
   };
 
-  // Выход
   const handleLogout = () => {
     onLogout();
     navigate("/login");
@@ -129,7 +126,9 @@ const Profile = ({ user, onLogout }) => {
             onChange={(e) => setNewName(e.target.value)}
           />
         ) : (
-          <h2 className="profile-name">{profile.full_name || "Имя не указано"}</h2>
+          <h2 className="profile-name">
+            {profile.full_name || "Имя не указано"}
+          </h2>
         )}
 
         <p className="profile-email">{user?.email || "Электронная почта"}</p>
