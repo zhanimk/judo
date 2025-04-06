@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "../supabaseClient";
-import { FaEnvelope, FaLock, FaTimes } from "react-icons/fa"; // Импорт иконок
+import { FaEnvelope, FaLock, FaTimes } from "react-icons/fa";
 
 const LoginForm = ({ onClose, onSwitch, onLoginSuccess }) => {
   const [formData, setFormData] = useState({
@@ -26,7 +26,6 @@ const LoginForm = ({ onClose, onSwitch, onLoginSuccess }) => {
     try {
       console.log("Попытка входа с email:", formData.email);
 
-      // Пытаемся выполнить вход через Supabase
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
@@ -40,7 +39,6 @@ const LoginForm = ({ onClose, onSwitch, onLoginSuccess }) => {
       } else if (data.user) {
         console.log("Вход успешный! Пользователь:", data.user);
 
-        // Получаем дополнительную информацию из таблицы profiles
         const { data: profileData, error: profileError } = await supabase
           .from("profiles")
           .select("*")
@@ -53,7 +51,6 @@ const LoginForm = ({ onClose, onSwitch, onLoginSuccess }) => {
           console.log("Профиль пользователя:", profileData);
         }
 
-        // Устанавливаем сообщение об успешном входе
         setMessage("✅ Кіру сәтті өтті!");
 
         if (typeof onLoginSuccess === "function") {
