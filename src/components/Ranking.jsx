@@ -3,9 +3,8 @@ import React, { useState } from "react";
 const Ranking = () => {
   const [searchTermAthletes, setSearchTermAthletes] = useState("");
   const [searchTermCoaches, setSearchTermCoaches] = useState("");
-  const [showAthletes, setShowAthletes] = useState(true); // State to toggle between athletes and coaches
+  const [showAthletes, setShowAthletes] = useState(true);
 
-  // Athlete data
   const [athletes, setAthletes] = useState([
     {
       id: 1,
@@ -109,7 +108,6 @@ const Ranking = () => {
     },
   ]);
 
-  // Coach data
   const [coaches, setCoaches] = useState([
     {
       id: 1,
@@ -206,15 +204,11 @@ const Ranking = () => {
   return (
     <section className="ranking">
       <div className="container">
-        {/* Buttons to toggle between athletes and coaches */}
         <div className="toggle-buttons">
           <button onClick={() => setShowAthletes(true)}>Спортшылар</button>
-          <button onClick={() => setShowAthletes(false)}>
-            Жаттықтырушылар
-          </button>
+          <button onClick={() => setShowAthletes(false)}>Жаттықтырушылар</button>
         </div>
 
-        {/* Display athlete table if athletes are selected */}
         {showAthletes && (
           <div>
             <h2>🥋 Спортшылар</h2>
@@ -262,7 +256,6 @@ const Ranking = () => {
           </div>
         )}
 
-        {/* Display coach table if coaches are selected */}
         {!showAthletes && (
           <div>
             <h2>👨‍🏫 Жаттықтырушылар</h2>
