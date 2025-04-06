@@ -7,19 +7,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Supabase клиент
 const { createClient } = require("@supabase/supabase-js");
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error("❌ Ошибка: Переменные окружения SUPABASE_URL или SUPABASE_ANON_KEY не настроены.");
+  console.error(
+    "❌ Ошибка: Переменные окружения SUPABASE_URL или SUPABASE_ANON_KEY не настроены."
+  );
   process.exit(1);
 }
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Функция для получения профиля пользователя
 const fetchProfile = async (userId) => {
   const { data, error } = await supabase
     .from("profiles")
@@ -67,8 +67,6 @@ app.post(
     }
   }
 );
-
-// ✅ Регистрация пользователя
 app.post(
   "/register",
   [
@@ -87,7 +85,6 @@ app.post(
     const { email, password, username, full_name } = req.body;
 
     try {
-      // Регистрация через Supabase
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -100,7 +97,6 @@ app.post(
         return res.status(400).json({ error: error.message });
       }
 
-      // Логирование данных для вставки в таблицу profiles
       console.log("Данные для вставки в profiles:", {
         id: data.user.id,
         email: email,
@@ -108,27 +104,28 @@ app.post(
         full_name: full_name || null,
       });
 
-      // Добавление данных в таблицу profiles
-      const { error: profileError } = await supabase
-        .from("profiles")
-        .insert([
-          {
-            id: data.user.id,
-            email: email,
-            username: username,
-            full_name: full_name || null,
-            avatar_url: null,
-            points: 0,
-          },
-        ]);
+      const { error: profileError } = await supabase.from("profiles").insert([
+        {
+          id: data.user.id,
+          email: email,
+          username: username,
+          full_name: full_name || null,
+          avatar_url: null,
+          points: 0,
+        },
+      ]);
 
       if (profileError) {
-        console.error("❌ Ошибка добавления в таблицу profiles:", profileError.message);
+        console.error(
+          "❌ Ошибка добавления в таблицу profiles:",
+          profileError.message
+        );
         return res.status(400).json({ error: "Ошибка сохранения профиля" });
       }
 
       res.json({
-        message: "Регистрация успешна! Пользователь сохранен в таблице profiles.",
+        message:
+          "Регистрация успешна! Пользователь сохранен в таблице profiles.",
         user: {
           id: data.user.id,
           email: data.user.email,
@@ -141,7 +138,6 @@ app.post(
   }
 );
 
-// ✅ Получение текущего пользователя
 app.get("/current-user", async (req, res) => {
   try {
     const { data: user, error } = await supabase.auth.getUser();
@@ -155,6 +151,5 @@ app.get("/current-user", async (req, res) => {
   }
 });
 
-// Запуск сервера
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Сервер запущен на порту: ${PORT}`));
