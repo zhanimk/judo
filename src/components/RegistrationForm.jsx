@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "../supabaseClient";
-
-import { FaUser, FaEnvelope, FaLock, FaGoogle, FaTimes } from "react-icons/fa"; // Импорт иконок
+import { FaUser, FaEnvelope, FaLock, FaGoogle, FaTimes } from "react-icons/fa";
 
 const RegistrationForm = ({ onClose, onSwitch }) => {
   const [formData, setFormData] = useState({
@@ -30,7 +29,6 @@ const RegistrationForm = ({ onClose, onSwitch }) => {
     setMessage("");
 
     try {
-      // 1. Создаём пользователя в Supabase Auth
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
@@ -45,7 +43,6 @@ const RegistrationForm = ({ onClose, onSwitch }) => {
       }
 
       if (data.user) {
-        // 2. Сохраняем данные в таблицу profiles
         console.log("Данные для вставки в таблицу profiles:", {
           id: data.user.id,
           full_name: formData.username,
