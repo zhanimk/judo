@@ -5,11 +5,10 @@ const Contacts = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState(""); // Состояние для статуса
-  const [user, setUser] = useState(null); // Состояние для хранения информации о пользователе
+  const [status, setStatus] = useState("");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Функция для создания таблицы (если ее нет)
     const createTable = async () => {
       try {
         const { data, error } = await supabase.rpc("create_contacts_table");
@@ -24,7 +23,6 @@ const Contacts = () => {
       }
     };
 
-    // Проверка текущего пользователя
     const fetchUser = async () => {
       const { data, error } = await supabase.auth.getUser();
       if (error) {
@@ -35,7 +33,6 @@ const Contacts = () => {
       }
     };
 
-    // Вызываем функцию создания таблицы и проверку пользователя
     createTable();
     fetchUser();
   }, []);
@@ -60,9 +57,9 @@ const Contacts = () => {
       }
 
       setStatus("Ваше сообщение успешно отправлено!");
-      setName(""); // Очистить поле имени
-      setEmail(""); // Очистить поле email
-      setMessage(""); // Очистить поле сообщения
+      setName("");
+      setEmail("");
+      setMessage("");
     } catch (error) {
       console.error("Ошибка на стороне клиента:", error.message);
       setStatus("Произошла ошибка. Попробуйте снова.");
@@ -106,7 +103,6 @@ const Contacts = () => {
           <p>Тіркелу үшін алдымен жүйеге кіріңіз.</p>
         )}
 
-        {/* Вывод сообщения о статусе с дополнительным логированием */}
         {status && (
           <div className="status-message">
             <p>{status}</p>
