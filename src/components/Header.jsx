@@ -12,7 +12,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [user, setUser] = useState(null);
   const [showChatbot, setShowChatbot] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false); // состояние для бургер-меню
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,7 +60,6 @@ const Header = () => {
   return (
     <>
       <header className={`judo-header ${isScrolled ? "scrolled" : ""}`}>
-        {/* Бургер-меню */}
         <div
           className={`burger-menu ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -119,7 +118,6 @@ const Header = () => {
           />
         </div>
 
-        {/* Галерея внутри хедера */}
         <div className="header-gallery">
           <div className="carousel-container">
             <div id="carousel">
@@ -131,7 +129,6 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Модальное окно для логина */}
       {showModal && (
         <div className="modal">
           <div className="modal-content">
@@ -153,7 +150,6 @@ const Header = () => {
         </div>
       )}
 
-      {/* Модальное окно для чат-бота */}
       {showChatbot && (
         <div className="modal">
           <div className="modal-content chatbot-modal">
