@@ -2,12 +2,8 @@ import React from "react";
 
 const Hero = () => {
   const handleRegister = () => {
-    const tournamentSection = document.getElementById(
-      "tournament-registration"
-    );
-    if (tournamentSection) {
-      tournamentSection.scrollIntoView({ behavior: "smooth" });
-    }
+    // Перенаправление на страницу турниров
+    window.location.href = "/tournaments";
   };
 
   const handleLearnMore = () => {
