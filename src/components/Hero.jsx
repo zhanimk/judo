@@ -2,7 +2,6 @@ import React from "react";
 
 const Hero = () => {
   const handleRegister = () => {
-    // Перенаправление на страницу турниров
     window.location.href = "/tournaments";
   };
 
