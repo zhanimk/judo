@@ -62,7 +62,13 @@ const News = () => {
             <div className="news-content">
               <h3>{news.title}</h3>
               <p>{news.description}</p>
-              <a href="#">Толығырақ</a>
+              <a
+                href="https://olympic.kz/ru/articles?rubric_id=3"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Толығырақ
+              </a>
             </div>
           </div>
         ))}
