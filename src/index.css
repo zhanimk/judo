@@ -437,138 +437,6 @@ body {
   }
 }
 
-.tournaments-hero-section {
-  text-align: center;
-  margin-bottom: 50px;
-}
-.tournaments-hero-section h2 {
-  font-size: clamp(28px, 5vw, 38px);
-  margin-bottom: 50px;
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-.tournament-hero-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.tournament-hero-card {
-  position: relative;
-  height: 350px;
-  border-radius: 20px;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.tournament-hero-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-}
-.tournament-hero-overlay {
-  background: rgba(0, 0, 0, 0.7);
-  color: var(--white);
-  padding: 20px;
-  text-align: center;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  transition: background 0.3s ease;
-}
-.tournament-hero-card:hover .tournament-hero-overlay {
-  background: rgba(0, 0, 0, 0.8);
-}
-.tournament-hero-overlay h3 {
-  font-size: clamp(20px, 4vw, 26px);
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: var(--gold);
-}
-@media (max-width: 1024px) {
-  .tournament-hero-card {
-    height: 300px;
-  }
-  .tournament-hero-overlay h3 {
-    font-size: clamp(18px, 5vw, 22px);
-  }
-}
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  width: 100%;
-  margin-top: 15px;
-}
-.view-photo-btn,
-.tournament-registration-btn {
-  padding: 12px 24px;
-  background: var(--gold) !important;
-  color: var(--dark-blue) !important;
-  border: none;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-  width: 48%;
-  transition: 0.3s ease;
-  font-size: 16px;
-}
-.view-photo-btn:hover,
-.tournament-registration-btn:hover {
-  background: #ffcc00 !important;
-  color: #000 !important;
-  transform: scale(1.05);
-}
-@media (max-width: 1024px) {
-  .view-photo-btn,
-  .tournament-registration-btn {
-    width: 45%;
-    font-size: 14px;
-  }
-}
-@media (max-width: 768px) {
-  .tournaments-hero-section {
-    padding: 0 20px;
-  }
-
-  .tournaments-hero-section h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-  }
-
-  .tournament-hero-list {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .tournament-hero-card {
-    height: 250px;
-  }
-
-  .tournament-hero-overlay h3 {
-    font-size: 20px;
-  }
-
-  .buttons-container {
-    flex-direction: column;
-  }
-
-  .view-photo-btn,
-  .tournament-registration-btn {
-    width: 100%;
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-}
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -2420,7 +2288,6 @@ h1 {
   border-radius: 5px;
   text-align: center;
 }
-
 .tournament-registration form {
   background: rgba(255, 255, 255, 0.9);
   padding: 10px;
@@ -2498,33 +2365,180 @@ h1 {
   margin-top: 6px;
   text-align: center;
 }
+
 @media (max-width: 768px) {
   .tournament-registration form {
     padding: 8px;
     border-radius: 6px;
-    max-width: 90%; 
+    max-width: 90%;
     margin: 10px auto;
   }
 
   .tournament-registration h4 {
-    font-size: 16px; 
+    font-size: 16px;
     margin-bottom: 8px;
   }
 
   .tournament-registration input {
-    padding: 6px; 
-    font-size: 12px; 
+    padding: 6px;
+    font-size: 12px;
   }
 
   .tournament-registration button {
-    padding: 8px 12px; 
-    font-size: 12px; 
-    width: 100%; 
+    padding: 8px 12px;
+    font-size: 12px;
+    width: 100%;
   }
 
   .tournament-registration .success,
   .tournament-registration .error {
-    font-size: 14px; 
+    font-size: 14px;
     margin-top: 8px;
+  }
+}
+
+.tournaments-hero-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.tournaments-hero-section h2 {
+  font-size: clamp(28px, 5vw, 38px);
+  margin-bottom: 50px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.tournament-hero-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tournament-hero-card {
+  position: relative;
+  height: 350px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.tournament-hero-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.tournament-hero-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--white);
+  padding: 20px;
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  transition: background 0.3s ease;
+}
+
+.tournament-hero-card:hover .tournament-hero-overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.tournament-hero-overlay h3 {
+  font-size: clamp(20px, 4vw, 26px);
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+@media (max-width: 1024px) {
+  .tournament-hero-card {
+    height: 300px;
+  }
+
+  .tournament-hero-overlay h3 {
+    font-size: clamp(18px, 5vw, 22px);
+  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.view-photo-btn,
+.tournament-registration-btn {
+  padding: 12px 24px;
+  background: var(--gold) !important;
+  color: var(--dark-blue) !important;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  width: 48%;
+  transition: 0.3s ease;
+  font-size: 16px;
+}
+
+.view-photo-btn:hover,
+.tournament-registration-btn:hover {
+  background: #ffcc00 !important;
+  color: #000 !important;
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .view-photo-btn,
+  .tournament-registration-btn {
+    width: 45%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tournaments-hero-section {
+    padding: 0 20px;
+  }
+
+  .tournaments-hero-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .tournament-hero-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .tournament-hero-card {
+    height: 250px;
+  }
+
+  .tournament-hero-overlay h3 {
+    font-size: 20px;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+  }
+
+  .view-photo-btn,
+  .tournament-registration-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }
