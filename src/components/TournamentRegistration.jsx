@@ -50,7 +50,7 @@ const TournamentRegistration = ({ user, tournament }) => {
 
   return (
     <div className="tournament-registration">
-      <h4>Тіркелу: {tournament.title}</h4>
+  
 
       {errorMessage && <p className="error">{errorMessage}</p>}
       {successMessage && <p className="success">{successMessage}</p>}
